@@ -6,72 +6,66 @@ let fourth_PLant = document.querySelector("[data-plant4]");
 let fifth_PLant = document.querySelector("[data-plant5]");
 let sixth_PLant = document.querySelector("[data-plant6]");
 let text_display = document.querySelector("[data-modal]");
+let display = document.querySelector("data-display");
+let displayImage = document.querySelector("[data-newImage]");
 
 const images = [
 
-    {plant:first_PLant, image:'images/scott-webb-249006-unsplash.jpg'},
-    {plant:second_PLant, image:'images/caleb-george-536388-unsplash.jpg'},
-    {plant:third_PLant, image:'images/lauren-mancke-60547-unsplash.jpg'},
-    {plant:fourth_PLant, image:'images/kari-shea-92027-unsplash.jpg'},
-    {plant:fifth_PLant, image:'images/tanalee-youngblood-341695-unsplash.jpg'},
-    {plant:sixth_PLant, image:'images/scott-webb-476290-unsplash.jpg'},
-
+    {plant:first_PLant, image:'images/scott-webb-249006-unsplash.jpg', text:"Beautiful Plant 1"},
+    {plant:second_PLant, image:'images/caleb-george-536388-unsplash.jpg', text:"Beautiful Plant 2"},
+    {plant:third_PLant, image:'images/lauren-mancke-60547-unsplash.jpg', text:"Beautiful Plant 3"},
+    {plant:fourth_PLant, image:'images/kari-shea-92027-unsplash.jpg', text:"Beautiful Plant 4"},
+    {plant:fifth_PLant, image:'images/tanalee-youngblood-341695-unsplash.jpg', text:"Beautiful Plant 5"},
+    {plant:sixth_PLant, image:'images/scott-webb-476290-unsplash.jpg', text:"Beautiful Plant 6"},
 ]
-
-function createDisplay(){
-    
-    let display = document.createElement('div');
-    display.setAttribute('class','display');
-    return display;
-
-}
-
-function increaseImage(plant,image){
+function increaseImage(plant,image,text){
     
 
     plant.addEventListener('click',function(){
         
         let deletePLant = document.getElementsByClassName('plants_clicked')[0]
         if (deletePLant){
-        deletePLant.classList.remove("plants_clicked");
+            deletePLant.classList.remove("plants_clicked");
         }
         plant.classList.add("plants_clicked");
         
-        let plantImage = document.createElement('img') ;
-        plantImage.setAttribute('class','newImage');
-        plantImage.setAttribute('src',image);
+        displayImage.setAttribute('src',image);
         
-        while (display.hasChildNodes()){
-            display.removeChild(display.lastChild);
-        }
-        
-        getInfo(plantImage)
-        display.appendChild(plantImage)
+        getInfo(displayImage,text)
         
     });
+    
+    // plant.addEventListener('keydown',function(){
+        
+    //     if(event.keyCode === 37){
+        
+    //     }
+
+
+    // });
 }
 
-display = createDisplay();
-document.body.insertBefore(display,plants)
 
 images.forEach(function(item){
-    increaseImage(item['plant'],item['image'])
+    increaseImage(item['plant'],item['image'],item['text'])
 });
 
 
-function getInfo(largeImage){
+function getInfo(largeImage,text){
     
     largeImage.addEventListener("click",function(){
+
         
         let plantInfo = document.createElement('div');
         
-        plantInfo.innerText = "Test"
+        plantInfo.innerText = text
         plantInfo.setAttribute("class","info")
         
         while (text_display.hasChildNodes()){
             text_display.removeChild(text_display.lastChild);
         }
-
+        
+        // largeImage.classList.add("newImage-clicked")
         text_display.appendChild(plantInfo);
         text_display.classList.remove('modal-hidden')
         
@@ -93,3 +87,4 @@ window.addEventListener('keydown',function(event){
     }
 
 });
+
