@@ -25,28 +25,28 @@ body, html{
 
 
 .plants {
-
+    
     display: flex;
     flex-direction: row;
     padding: 0 0px 0 0px;
     justify-content: center;
     opacity: .5;
-
-  
-
 }
 
-.newImage{
 
-    height: 400px;
-}
 
 .plants_clicked{
 
-    outline: 3px solid green;
-    opacity: .9;
-
-
+    border: 2.5px solid green;
+    opacity: 1.0;
 }
+
+
+.newImage{
+    
+    height: 400px;
+}
+
+
 
 

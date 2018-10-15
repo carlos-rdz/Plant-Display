@@ -26,10 +26,14 @@ function createDisplay(){
 }
 
 function increaseImage(plant,image){
-
+    
 
     plant.addEventListener('click',function(){
-        // plants.classList.remove('plants-clicked');
+        
+        let deletePLant = document.getElementsByClassName('plants_clicked')[0]
+        if (deletePLant){
+        deletePLant.classList.remove("plants_clicked");
+        }
         plant.classList.add("plants_clicked");
         
         let plantImage = document.createElement('img') ;
@@ -48,11 +52,6 @@ function increaseImage(plant,image){
 display = createDisplay();
 document.body.insertBefore(display,plants)
 
-increaseImage(images[0]['plant'],images[0]['image']);
-increaseImage(images[1]['plant'],images[1]['image']);
-increaseImage(images[2]['plant'],images[2]['image']);
-increaseImage(images[3]['plant'],images[3]['image']);
-increaseImage(images[4]['plant'],images[4]['image']);
-increaseImage(images[5]['plant'],images[5]['image']);
-
-            
+images.forEach(function(item){
+    increaseImage(item['plant'],item['image'])
+});
