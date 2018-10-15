@@ -5,6 +5,7 @@ let third_PLant = document.querySelector("[data-plant3]");
 let fourth_PLant = document.querySelector("[data-plant4]");
 let fifth_PLant = document.querySelector("[data-plant5]");
 let sixth_PLant = document.querySelector("[data-plant6]");
+let text_display = document.querySelector("[data-modal]");
 
 const images = [
 
@@ -43,7 +44,8 @@ function increaseImage(plant,image){
         while (display.hasChildNodes()){
             display.removeChild(display.lastChild);
         }
-
+        
+        getInfo(plantImage)
         display.appendChild(plantImage)
         
     });
@@ -54,4 +56,40 @@ document.body.insertBefore(display,plants)
 
 images.forEach(function(item){
     increaseImage(item['plant'],item['image'])
+});
+
+
+function getInfo(largeImage){
+    
+    largeImage.addEventListener("click",function(){
+        
+        let plantInfo = document.createElement('div');
+        
+        plantInfo.innerText = "Test"
+        plantInfo.setAttribute("class","info")
+        
+        while (text_display.hasChildNodes()){
+            text_display.removeChild(text_display.lastChild);
+        }
+
+        text_display.appendChild(plantInfo);
+        text_display.classList.remove('modal-hidden')
+        
+        
+    });
+    
+}
+
+text_display.addEventListener("click",function(){
+    
+    text_display.classList.add('modal-hidden')
+    
+});
+
+window.addEventListener('keydown',function(event){
+    
+    if (event.keyCode === 27){
+        text_display.classList.add('modal-hidden')
+    }
+
 });
