@@ -1,0 +1,34 @@
+body, html{
+
+    height: 100%;
+    width: 100%;
+
+    background-image: url(../images/plant_background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+}
+
+.plants {
+
+    display: flex;
+    flex-direction: row;
+    padding: 0 0px 0 0px;
+    justify-content: center;
+    opacity: .5;
+
+  
+
+}
+
+.plants_clicked{
+
+    outline: 3px solid green;
+    opacity: .9;
+
+
+}
