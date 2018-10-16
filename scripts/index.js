@@ -35,20 +35,42 @@ function increaseImage(plant,image,text){
         
     });
     
-    // plant.addEventListener('keydown',function(){
-        
-    //     if(event.keyCode === 37){
-        
-    //     }
-
-
-    // });
 }
 
+let counter = 1
+function arrowKeys(images){
+    window.addEventListener('keydown',function(){
+        if(event.keyCode === 37){
+            if (counter > 0){
+            counter -= 1}
+            let deletePLant = document.getElementsByClassName('plants_clicked')[0]
+            if (deletePLant){
+                deletePLant.classList.remove("plants_clicked");
+            }
+            images[counter]['plant'].classList.add("plants_clicked");
+            displayImage.setAttribute('src',images[counter]['image']);
+            
+            getInfo(displayImage,images[counter]['text'])
+        }
+        if(event.keyCode === 39){
+            if (counter < 5){
+            counter += 1}
+            let deletePLant = document.getElementsByClassName('plants_clicked')[0]
+            if (deletePLant){
+                deletePLant.classList.remove("plants_clicked");
+            }
+            images[counter]['plant'].classList.add("plants_clicked");
+            displayImage.setAttribute('src',images[counter]['image']);
+            
+            getInfo(displayImage,images[counter]['text'])
+    }
+});
+}
 
 images.forEach(function(item){
     increaseImage(item['plant'],item['image'],item['text'])
 });
+arrowKeys(images);
 
 
 function getInfo(largeImage,text){
