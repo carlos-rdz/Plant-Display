@@ -8,17 +8,18 @@ let sixth_PLant = document.querySelector("[data-plant6]");
 let text_display = document.querySelector("[data-modal]");
 let display = document.querySelector("data-display");
 let displayImage = document.querySelector("[data-newImage]");
+let counter = 0
 
 const images = [
 
-    {plant:first_PLant, image:'images/scott-webb-249006-unsplash.jpg', text:"Beautiful Plant 1"},
-    {plant:second_PLant, image:'images/caleb-george-536388-unsplash.jpg', text:"Beautiful Plant 2"},
-    {plant:third_PLant, image:'images/lauren-mancke-60547-unsplash.jpg', text:"Beautiful Plant 3"},
-    {plant:fourth_PLant, image:'images/kari-shea-92027-unsplash.jpg', text:"Beautiful Plant 4"},
-    {plant:fifth_PLant, image:'images/tanalee-youngblood-341695-unsplash.jpg', text:"Beautiful Plant 5"},
-    {plant:sixth_PLant, image:'images/scott-webb-476290-unsplash.jpg', text:"Beautiful Plant 6"},
+    {plant:first_PLant, image:'images/scott-webb-249006-unsplash.jpg', text:"Beautiful Plant 1", index:0},
+    {plant:second_PLant, image:'images/caleb-george-536388-unsplash.jpg', text:"Beautiful Plant 2", index:1},
+    {plant:third_PLant, image:'images/lauren-mancke-60547-unsplash.jpg', text:"Beautiful Plant 3", index:2},
+    {plant:fourth_PLant, image:'images/kari-shea-92027-unsplash.jpg', text:"Beautiful Plant 4", index:3},
+    {plant:fifth_PLant, image:'images/tanalee-youngblood-341695-unsplash.jpg', text:"Beautiful Plant 5", index:4},
+    {plant:sixth_PLant, image:'images/scott-webb-476290-unsplash.jpg', text:"Beautiful Plant 6", index:5},
 ]
-function increaseImage(plant,image,text){
+function increaseImage(plant,image,text,index){
     
 
     plant.addEventListener('click',function(){
@@ -32,12 +33,13 @@ function increaseImage(plant,image,text){
         displayImage.setAttribute('src',image);
         
         getInfo(displayImage,text)
+
+        counter = index
         
     });
     
 }
 
-let counter = 1
 function arrowKeys(images){
     window.addEventListener('keydown',function(){
         if(event.keyCode === 37){
@@ -68,7 +70,7 @@ function arrowKeys(images){
 }
 
 images.forEach(function(item){
-    increaseImage(item['plant'],item['image'],item['text'])
+    increaseImage(item['plant'],item['image'],item['text'],item['index'])
 });
 arrowKeys(images);
 
